@@ -1,0 +1,76 @@
+/* CSS Document */
+body {
+	border: 0;
+	font-family: Times, "Times New Roman", serif;
+}
+#bookcontent {
+	width: 80%;
+	height: 100%;
+}
+#lighthed h1 {
+	background-color: #2CADB1;
+	color: white;
+	padding: 0 1em;
+	margin-top: 0px;
+	padding-bottom: 8px;
+	padding-top: 8px;
+	text-transform: uppercase;
+	font-size: 20px;
+	float: left;
+}
+#lighthed marquee {
+	float: left;
+	width: 300px;
+	height: 40px;
+}
+#lighthed {
+	text-align: center;
+	box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+	width: 1000px;
+	height: 40px;
+	margin: auto;
+	margin-top: 40px;
+}
+#bookhead {
+	margin-left: 30px;
+	border-top: 1px solid #A2A2A2;
+	margin-top: 20px;
+	padding-left: 30px;
+	font-size: 15px;
+}
+#booktent {
+	margin-left: 50px;
+	margin-bottom: 15px;
+	height: 100%;
+	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+}
+#booktent h6 {
+	background-color: #96C321;
+	text-align: center;
+	font-size: 15px;
+	padding: 0 1em;
+	line-height: 40px;
+	width: 90px;
+	height: 40px;
+	margin: 20px;
+}
+#booktent p {
+	padding-top: 5px;
+	clear: both;
+}
+#booktent img {
+	width: 300px;
+	height: 200px;
+	margin-right: 5px;
+	float: left;
+}
+#booktent ul li {
+	margin-right: 40px;
+	list-style-type: none;
+	border-bottom: 1px solid #A1A1A1;
+}
+#booktent h4 {
+	padding: 5px;
+	margin-top: 5px;
+	font-size: 20px;
+}

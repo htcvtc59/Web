@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AppleStore</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&amp;subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="cssadmin/style.css">
+    <link rel="stylesheet" href="cssadmin/product.css">
+    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="jsadmin/admin.js"></script>
+    <script src="jsadmin/adminajax.js"></script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/592bdcb94374a471e7c503f7/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <link rel="stylesheet" href="smoothmenu/ddsmoothmenu.css">
+    <script src="smoothmenu/ddsmoothmenu.js"></script>
+    <script type="text/javascript">
+
+        ddsmoothmenu.init({
+            mainmenuid: "smoothmenu1", //menu DIV id
+            orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+            classname: 'ddsmoothmenu', //class added to menu's outer DIV
+            //customtheme: ["#1c5a80", "#18374a"],
+            contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+        })
+
+    </script>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row" id="menuContent">
+        <div id="mainMenuLarge">
+            <!--Logo-->
+            <h1 class="col-sm-4"><a href="IndexLarge.html">Apple Store</a></h1>
+
+            <div class="col-sm-4" class="btn-group" id="mainSearchLarge">
+                <!--Search-->
+                <div class="input-group input-group-lg">
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-success btn-group-lg">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </span>
+                    <input type="text" class="form-control" placeholder="Nhập từ khóa cần tìm...">
+                </div>
+            </div>
+            <!--Nhập từ khóa cần tìm  0 sản phẩm-->
+            <!--Cart and Product-->
+            <div class="col-sm-4" class="btn-group" id="proinCartLarge">
+
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" placeholder="0 sản phẩm" disabled>
+                    <span class="input-group-btn dropdown">
+                  <button type="button" class="btn btn-primary btn-group-lg"
+                          id="dropCart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                  </button>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropCart">
+                        <li><a href="#">Action</a></li>
+                        <li>Thành Tiền</li>
+                        <li>Tổng cộng</li>
+                        <li>
+                            <button class="btn btn-group-xs btn-primary" type="button">Xem Giỏ Hàng</button>
+                            <button class="btn btn-group-xs btn-primary" type="button">Thanh Toán</button>
+                        </li>
+                    </ul>
+                    </span>
+                </div>
+            </div>
+
+
+            <!--Menu Content-->
+            <div id="menuPageLarge">
+                <div id="smoothmenu1" class="ddsmoothmenu">
+                    <ul>
+                        <li><a href="IndexLarge.html">
+                            <svg style="width:15px;height:15px; margin: 0; padding: 0;" viewBox="0 0 24 24">
+                                <path fill="#ffffff" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
+                            </svg>
+                        </a>
+                        </li>
+                        <li><a href="#">APPLE</a>
+                            <ul>
+                                <li><a href="#">iPhone</a></li>
+                                <li><a href="#">iPad</a></li>
+                                <li><a href="#">Mac</a></li>
+                                <li><a href="#">iPod</a></li>
+                                <li><a href="#">Watch</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">ĐIỆN THOẠI</a>
+                            <ul>
+                                <li><a href="#">Apple</a></li>
+                                <li><a href="#">Samsung</a></li>
+                                <li><a href="#">Sony</a></li>
+                                <li><a href="#">Google</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">MÁY TÍNH</a>
+                            <ul>
+                                <li><a href="#">Apple</a></li>
+                                <li><a href="#">Lenovo</a></li>
+                                <li><a href="#">MSI</a></li>
+                                <li><a href="#">Asus</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">PHỤ KIỆN</a>
+                            <ul>
+                                <li><a href="#">Sac</a></li>
+                                <li><a href="#">USB</a></li>
+                                <li><a href="#">Op Lung</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <br style="clear: left"/>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row" id="contentPageLarge">
+        <div class="col-sm-10">
+            <div class="col-sm-7">
+                <!--Detail Product-->
+                <div id="proZoom">
+                <div class="slides-container" id="zoomimg">
+                <img />
+                </div>
+
+                <br>
+                <div class="smallProIcon">
+                <span class="slideitem">
+                <img src="productimagedetail/ps4-slim-dualshock-4-150x150.jpg"/>
+                </span>
+                <span class="slideitem">
+                <img src="productimagedetail/ps4-slim-45-150x150.jpg"/>
+                </span>
+                <span class="slideitem">
+                <img src="productimagedetail/ps4-slim-44-150x150.jpg"/>
+                </span>
+                <span class="slideitem">
+                <img src="productimagedetail/ps4-slim-46-150x150.jpg"/>
+                </span>
+                </div>
+                </div>
+
+            </div>
+            <div class="col-sm-5">
+                <!--name product-->
+                <div id="nameproduct">
+                <h4>Playstation 4 Slim - 500GB Combo</h4>
+                </div>
+
+                <div id="protocart">
+                <h3>8.490.000₫</h3>
+                <div class="onelinep"></div>
+
+                <div class="input-group input-group-lg quantityproduct">
+                <span class="input-group-btn">
+                <button class="btn btn-danger btn-number" data-type="minus" id="btnsub" type="button">
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                </button>
+                </span>
+
+                <input id="datanumbercart" name="numberinput" type="text" class="form-control input-number"
+                value="1" min="1" max="100">
+
+                <span class="input-group-btn">
+                <button class="btn btn-danger btn-number" data-type="plus" id="btnadd" type="button">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+                </span>
+                </div>
+                <!--Add to cart-->
+                <div id="addtothecart">
+                THÊM VÀO GIỎ
+                </div>
+                </div>
+
+
+
+                </div>
+
+
+            <div class="col-sm-12">
+
+                <!--Description-->
+                <div id="detailDescription">
+                    <!--<div id="detail1">MÔ TẢ</div>-->
+                    <!--<div id="detail2">THÔNG SỐ KĨ THUẬT</div>-->
+                    <ul>
+                        <li id="detail1">MÔ TẢ</li>
+                        <li id="detail2">THÔNG SỐ KĨ THUẬT</li>
+                    </ul>
+                </div>
+                <!--Ajax-->
+                <div id="contentDetailDes">
+
+                </div>
+                <div id="contentDetailConfig">
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-2">
+            <div class="itempopular">Mới Cập Nhật</div>
+            <div class="ipopular">
+                <span>
+                    <img src="image/large/dualshock-4-wireless-controller-2016-00-50x50.jpg"/>
+                    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+                    <p>10.780.000₫</p>
+                </span>
+                <span>
+                    <img src="image/large/ps4-pro-00-50x50.jpg"/>
+                    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+                    <p>10.780.000₫</p>
+                </span>
+                <span>
+                    <img src="image/large/ps4-slim-00-50x50.jpg"/>
+                    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+                    <p>10.780.000₫</p>
+                </span>
+                <span>
+                    <img src="image/large/xbox-360-controller-for-windows-00-50x50.jpg"/>
+                    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+                    <p>10.780.000₫</p>
+                </span>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!--Footer-->
+    <div class="row" id="footerPage">
+        <footer>
+            <div class="footer" id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> GIỚI THIỆU </h3>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        Hệ thống bán lẻ chính hãng ,uy tín :
+                                        máy chơi game, điện thoại, máy tính bảng, laptop, đồ chơi kĩ thuật số
+                                    </a>
+                                </li>
+                                <li> <a href="#"> GÓP Ý,KHIẾU NẠI</a> </li>
+                                <li> <a href="#"> Email: htcvtc59@gmai.com </a> </li>
+                                <li> <a href="#"> Phone: 0979 995 575</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> HỖ TRỢ </h3>
+                            <ul>
+                                <li> <a href="#"> Thương hiệu</a> </li>
+                                <li> <a href="#"> Tin tức </a> </li>
+                                <li> <a href="#"> Hướng dẫn mua hàng </a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> Thông tin </h3>
+                            <ul>
+                                <li> <a href="#"> Quy định chung </a> </li>
+                                <li> <a href="#"> Quy định bảo hành </a> </li>
+                                <li> <a href="#"> Quy định đặt cọc </a> </li>
+                                <li> <a href="#"> Chính sách giao hàng </a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> LIÊN HỆ </h3>
+                            <ul>
+                                <li> <a href="#"> ĐỊA CHỈ:</a> </li>
+                                <li> <a href="#"> - 92 Pasteur,HN</a> </li>
+                                <li> <a href="#"> THỜI GIAN LÀM VIỆC: </a> </li>
+                                <li> <a href="#"> - Các ngày trong tuần: 9h - 20h</a> </li>
+                                <li> <a href="#"> - Chủ nhật và ngày lễ: 9h - 19h</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 " style="padding-top: 100px;">
+
+                            <ul>
+                                <li>
+                                    <div class="input-append newsletter-box text-center">
+                                        <input type="text" class="full text-center input-sm" placeholder="Email ">
+                                        <button class="btn  bg-gray btn-success" type="button">Gửi <i class="fa fa-long-arrow-right"> </i> </button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="social">
+                                <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
+                                <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
+                                <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
+                                <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
+                                <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/.row-->
+                </div>
+                <!--/.container-->
+            </div>
+            <!--/.footer-->
+
+            <div class="footer-bottom">
+                <div class="container">
+                    <p class="pull-left"> Copyright © 2017. Apple Store </p>
+                    <div class="pull-right">
+                        <ul class="nav nav-pills payments">
+                            <li><i class="fa fa-cc-visa"></i></li>
+                            <li><i class="fa fa-cc-mastercard"></i></li>
+                            <li><i class="fa fa-cc-amex"></i></li>
+                            <li><i class="fa fa-cc-paypal"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--/.footer-bottom-->
+        </footer>
+
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    </div>
+    <div class="btn-top" href="javascript:void(0);" title="Top" style="display: inline;"></div>
+
+</div>
+
+<script src="js/jquery.zoom.js"></script>
+<script src="js/jquery.bxslider.min.js"></script>
+<script src="js/responsiveslides.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

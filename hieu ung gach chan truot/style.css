@@ -1,0 +1,37 @@
+/* Underline Slide */
+.uslide {
+display: inline-block;
+}
+.uslide:after {
+content: '';
+display: block;
+height: 3px;
+width: 0;
+background: transparent;
+transition: width .5s ease, background-color .5s ease;
+}
+.uslide:hover:after {
+width: 100%;
+background: #990000;
+}
+/*Slide Right To Left*/
+.uslide2 {
+display: inline-block;
+position: relative;
+padding-bottom: 3px;
+}
+.uslide2:after {
+content: '';
+display: block;
+position: absolute;
+right: 0;
+bottom: 0;
+height: 3px;
+width: 0;
+background: transparent;
+transition: width .5s ease, background-color .5s ease;
+}
+.uslide2:hover:after {
+width: 100%;
+background: #990000;
+}

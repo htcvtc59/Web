@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AppleStore</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&amp;subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="cssadmin/style.css">
+    <link rel="stylesheet" href="cssadmin/product.css">
+    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="jsadmin/admin.js"></script>
+    <script src="jsadmin/adminajax.js"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row" id="menuContent">
+        <div class="col-xs-12" id="mainMenu">
+            <!--Logo-->
+            <h1><a href="Index.html">Apple Store</a></h1>
+            <!--Search-->
+            <div class="input-group input-group-lg">
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-success btn-group-lg">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </span>
+                <input type="text" class="form-control" placeholder="Nhập từ khóa cần tìm...">
+            </div>
+            <!--Nhập từ khóa cần tìm  0 sản phẩm-->
+            <!--Cart and Product-->
+            <div class="btn-group" id="proincart">
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" placeholder="0 sản phẩm" disabled>
+                    <span class="input-group-btn dropdown">
+                  <button type="button" class="btn btn-primary btn-group-lg"
+                          id="dropCart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                  </button>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropCart">
+                        <li><a href="#">Action</a></li>
+                        <li>Thành Tiền</li>
+                        <li>Tổng cộng</li>
+                        <li>
+                            <button class="btn btn-group-xs btn-primary" type="button">Xem Giỏ Hàng</button>
+                            <button class="btn btn-group-xs btn-primary" type="button">Thanh Toán</button>
+                        </li>
+                    </ul>
+                    </span>
+                </div>
+            </div>
+
+            <!--Menu Content-->
+            <div id="menuPage">
+                <span class="glyphicon glyphicon-align-justify btn-lg" aria-hidden="true"
+                      role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true"
+                      aria-controls="collapseOne"
+                ><a>MENU</a></span>
+                <div id="collapseOne" class="collapse">
+                    <div>
+                        <a href="index.html">
+                            <svg style="width:35px;height:35px" viewBox="0 0 24 24">
+                                <path fill="#ffffff" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="itemMenu">
+                        <a href="#">APPLE</a>
+                        <svg class="itemsmall" style="width:40px;height:40px" viewBox="0 0 24 24"
+                             role="button" data-toggle="collapse"
+                             aria-controls="#itemofitemMenu" href="#itemofitemMenu" aria-expanded="true">
+                            <path fill="#ffffff" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                        </svg>
+                        <div class="itemofitemMenu">
+                            <a href="#">iPhone</a>
+                            <a href="#">iPad</a>
+                            <a href="#">Mac</a>
+                            <a href="#">iPod</a>
+                            <a href="#">Watch</a>
+                        </div>
+                    </div>
+
+                    <div class="itemMenu">
+                        <a href="#">ĐIỆN THOẠI</a>
+                        <svg class="itemsmall" style="width:40px;height:40px" viewBox="0 0 24 24"
+                             role="button" data-toggle="collapse"
+                             aria-controls="#itemofitemMenu" href="#itemofitemMenu" aria-expanded="true">
+                            <path fill="#ffffff" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                        </svg>
+                        <div class="itemofitemMenu">
+                            <a href="#">Apple</a>
+                            <a href="#">Samsung</a>
+                            <a href="#">Sony</a>
+                            <a href="#">Google</a>
+                        </div>
+                    </div>
+                    <div class="itemMenu">
+                        <a href="#">MÁY TÍNH</a>
+                        <svg class="itemsmall" style="width:40px;height:40px" viewBox="0 0 24 24"
+                             role="button" data-toggle="collapse"
+                             aria-controls="#itemofitemMenu" href="#itemofitemMenu" aria-expanded="true">
+                            <path fill="#ffffff" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                        </svg>
+                        <div class="itemofitemMenu">
+                            <a href="#">Apple</a>
+                            <a href="#">Lenovo</a>
+                            <a href="#">MSI</a>
+                            <a href="#">Asus</a>
+                        </div>
+                    </div>
+                    <div class="itemMenu">
+                        <a href="#">PHỤ KIỆN</a>
+                        <svg class="itemsmall" style="width:40px;height:40px" viewBox="0 0 24 24"
+                             role="button" data-toggle="collapse"
+                             aria-controls="#itemofitemMenu" href="#itemofitemMenu" aria-expanded="true">
+                            <path fill="#ffffff" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                        </svg>
+                        <div class="itemofitemMenu">
+                            <a href="#">Sac</a>
+                            <a href="#">USB</a>
+                            <a href="#">Op Lung</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row" id="contentPage">
+        <div class="col-xs-12" id="contentProduct">
+            <!--Detail Product-->
+            <div id="proZoom">
+                <div class="slides-container" id="zoomimg">
+                    <img height="240px" width=200px"/>
+                </div>
+
+                <br>
+                <div class="smallProIcon">
+            <span class="slideitem">
+                <img src="productimagedetail/ps4-slim-dualshock-4-150x150.jpg"/>
+                </span>
+                    <span class="slideitem">
+                <img src="productimagedetail/ps4-slim-45-150x150.jpg"/>
+                </span>
+                    <span class="slideitem">
+                <img src="productimagedetail/ps4-slim-44-150x150.jpg"/>
+                </span>
+                    <span class="slideitem">
+                <img src="productimagedetail/ps4-slim-46-150x150.jpg"/>
+                </span>
+                </div>
+            </div>
+            <!--name product-->
+            <div id="nameproduct">
+                <h4>Playstation 4 Slim - 500GB Combo</h4>
+            </div>
+
+            <div id="protocart">
+                <h3>8.490.000₫</h3>
+                <div class="onelinep"></div>
+
+                <div class="input-group input-group-lg quantityproduct">
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger btn-number" data-type="minus" id="btnsub" type="button">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </button>
+                    </span>
+
+                    <input id="datanumbercart" name="numberinput" type="text" class="form-control input-number"
+                           value="1" min="1" max="100">
+
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger btn-number" data-type="plus" id="btnadd" type="button">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+                <!--Add to cart-->
+                <div id="addtothecart">
+                    THÊM VÀO GIỎ
+                </div>
+            </div>
+
+            <!--Description-->
+            <div id="detailDescription">
+                <div id="detail1">MÔ TẢ</div>
+                <div id="detail2">THÔNG SỐ KĨ THUẬT</div>
+            </div>
+            <!--Ajax-->
+            <div id="contentDetailDes">
+
+            </div>
+            <div id="contentDetailConfig">
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row" id="footerPage">
+        <div class="col-xs-12" id="mainFooter">
+            <h5>GIỚI THIỆU</h5>
+            <h5>GÓP Ý,KHIẾU NẠI:</h5>
+            <p>-Email:htcvtc59@gmail.com</p>
+            <h5>ĐỊA CHỈ</h5>
+            <p>Hà nội</p>
+            <h5>THỜI GIAN LÀM VIỆC:</h5>
+            <p>-Các ngày trong tuần: 9h-20h</p>
+            <p>-Chủ nhật và ngày lễ: 9h-19h</p>
+
+            <div class="col-xs-12 footer"><a class="btn-top" href="javascript:void(0);" title="Top"
+                                             style="display: inline;"></a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="js/jquery.zoom.js"></script>
+<script src="js/jquery.bxslider.min.js"></script>
+<script src="js/responsiveslides.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

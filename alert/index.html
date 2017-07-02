@@ -1,0 +1,77 @@
+<html>
+    <head>
+    <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css" >
+        <SCRIPT LANGUAGE="JavaScript">
+function testSelect (form) {
+//    var a = form.firstname.value;
+//    var b = form.lastname.value;
+//    var c = form.email.value;
+//    var d = form.areamessage.value;
+//    alert ("firstname :"+a+"\nlastname :"+b+"\nemail :"+c+"\nmessage :"+d);
+//
+//
+//}
+
+
+
+      var password = document.getElementById("password").value;
+    var againpassword = document.getElementById("againpassword").value;
+
+
+        if (password != againpassword) {
+
+            form.password.focus();
+            return false;
+
+        } else {
+
+            var str = "";
+
+            var elements = document.getElementById('form').elements;
+            for (var i = 0; i < elements.length-1; i++) {
+                str += elements[i].name + " : " + elements[i].value + "\n";
+            }
+
+            alert(str);
+        }
+
+
+
+
+
+}
+</SCRIPT>
+    </head>
+    <body>
+<div id="contactlh">
+  <form  action="#" method="post" id="form" >
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" autofocus required
+           title="must be alphanumeric in 6-12 chars" >
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname">
+
+
+      <label for="username">Username:</label>
+      <input type="text" required name="username" placeholder="Username"
+             id="username" class="inputText" >
+
+      <label for="password">Password:</label>
+      <input type="password" required name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" >
+
+
+      <label for="againpassword">Confirm Password:</label>
+      <input type="password" required name="againpassword" id="againpassword" >
+
+    <label for="email">Email<br>
+    </label>
+    <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" >
+    <label for="message">Message<br>
+    </label>
+    <textarea id="message" rows="7" name="areamessage"> </textarea>
+    <input type="submit" value="Submit" id="submit_post" onClick=" return testSelect(this.form)">
+  </form>
+</div>
+        </body>
+    </html>

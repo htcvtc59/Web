@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AppleStore</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&amp;subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="cssadmin/style.css">
+    <link rel="stylesheet" href="cssadmin/product.css">
+    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="jsadmin/admin.js"></script>
+    <script src="jsadmin/adminajax.js"></script>
+    <script src="jsadmin/login.js"></script>
+
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/592bdcb94374a471e7c503f7/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row" id="menuContent">
+        <div id="mainMenuLarge">
+            <!--Login-->
+
+            <div class="col-sm-12" id="loginandRegister">
+
+                @if (Session[CommonConstants.ACCOUNT_SESSION] == null)
+                {
+                <!--Hello-->
+                <button type="button" class="login btn btn-success" id="btnLogin"  data-toggle="modal"
+                        data-target=".bs-example-modal-lg">
+                    Đăng nhập
+                </button>
+                }
+                else
+                {
+                var acc = (AccountSession)Session[CommonConstants.ACCOUNT_SESSION];
+
+                <div class="login" data-toggle="modal"
+                     data-target=".bs-example-modal-lg">
+                    Xin Chào Bạn @acc.Account.RealName
+                    @Html.ActionLink("Thoát", "LogoutAcc", "Account", null,new { @class = "btn btn-info btn-exit" })
+                </div>
+
+                }
+
+
+                <!--Login Form-->
+
+
+                <!--Register Form-->
+
+
+
+            </div>
+
+            <!--Logo Search Cart-->
+            <div class="col-sm-12" id="logoandSearchPro">
+                <!--Logo-->
+                <h1 class="col-sm-4"><a href="/" ref="nofollow">Apple Store</a></h1>
+                <!--Search-->
+                <div class="col-sm-4 btn-group" id="mainSearchLarge">
+                    <!--Search-->
+                    <div class="input-group input-group-lg">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-success btn-group-lg">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        <input type="text" class="form-control" placeholder="Nhập từ khóa cần tìm...">
+                    </div>
+                </div>
+                <!--Cart-->
+                <div class="col-sm-4 btn-group" id="proinCartLarge">
+
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" placeholder="@Model.Count sản phẩm" disabled>
+                        <span class="input-group-btn dropdown">
+            <button type="button" class="btn btn-primary btn-group-lg"
+                    id="dropCart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropCart">
+               @if (Model.Count > 0)
+               {
+                 <li class="containerCart">
+                    @foreach (var item in Model)
+                    {
+                        <div class="itemCart">
+                            <img class="itemC itemC1" src="@item.Product.Images">
+                            <p class="itemC itemC2" >@item.Product.Name</p>
+                            <p class="itemC itemC3" >x @item.Quantity</p>
+                            <p class="itemC itemC4" >@string.Format("{0:C}", (item.Product.Price.GetValueOrDefault(0) * item.Quantity)).Replace(",00", "")</p>
+                            <p class="itemC itemC5" >
+                                <a href="#" id="btnDeleteitem" data-id="@item.Product.ID"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                            </p>
+                        </div>
+
+                        total += (int)(item.Product.Price.GetValueOrDefault(0) * item.Quantity);
+                    }
+
+
+                </li>
+
+                <li>Tổng cộng<span>@string.Format("{0:C}", total).Replace(",00", "")</span></li>
+               }
+                <li>
+                    <button onclick="location.href='@Url.Action("Index", "Cart")'" class="btn btn-group-xs btn-primary" type="button">Xem Giỏ Hàng</button>
+                    <button onclick="location.href='@Url.Action("Payment", "Cart")'" class="btn btn-group-xs btn-primary" type="button">Thanh Toán</button>
+                </li>
+            </ul>
+        </span>
+                    </div>
+                </div>
+
+            </div>
+            <!--Menu Content-->
+
+            <div class="col-sm-12" id="menuPageLarge">
+                <ul>
+                    <li>
+                        <a href="@Url.Action("Index","Home")">TRANG CHỦ</a>
+                    </li>
+                    @foreach (var item in listMenu)
+                    {
+                    <li>
+                        <a href="#">@item.Text</a>
+                        <ul class="sub-menu">
+                            @foreach (var itemcate in listProCate)
+                            {
+                            if (item.ID==itemcate.ParentID)
+                            {
+                            <li><a href="the-loai-con/@itemcate.MetaTitle/the-loai-@itemcate.ID">@itemcate.Name</a></li>
+                            }
+                            }
+                        </ul>
+                    </li>
+                    }
+
+
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!--Content-->
+    <div class="row" id="contentLarge">
+        <div class="col-sm-3">
+            <div class="itempopular">Bán Chạy</div>
+            <div class="ipopular">
+    <span>
+    <img src="image/large/dualshock-4-wireless-controller-2016-00-50x50.jpg"/>
+    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+    <p>10.780.000₫</p>
+    </span>
+                <span>
+    <img src="image/large/ps4-pro-00-50x50.jpg"/>
+    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+    <p>10.780.000₫</p>
+    </span>
+                <span>
+    <img src="image/large/ps4-slim-00-50x50.jpg"/>
+    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+    <p>10.780.000₫</p>
+    </span>
+                <span>
+    <img src="image/large/xbox-360-controller-for-windows-00-50x50.jpg"/>
+    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+    <p>10.780.000₫</p>
+    </span>
+            </div>
+            <div class="itempopular">Mới Cập Nhật</div>
+            <div class="ipopular">
+    <span>
+    <img src="image/large/dualshock-4-wireless-controller-2016-00-50x50.jpg"/>
+    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+    <p>10.780.000₫</p>
+    </span>
+                <span>
+    <img src="image/large/ps4-pro-00-50x50.jpg"/>
+    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+    <p>10.780.000₫</p>
+    </span>
+                <span>
+    <img src="image/large/ps4-slim-00-50x50.jpg"/>
+    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+    <p>10.780.000₫</p>
+    </span>
+                <span>
+    <img src="image/large/xbox-360-controller-for-windows-00-50x50.jpg"/>
+    <a href="#"><p>Playstation 4 Pro - 1TB - US</p></a>
+    <p>10.780.000₫</p>
+    </span>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div id="slidemain">
+                <ul class="rslides">
+                    <li>
+                        <embed src="image/1.svg" alt="">
+                    </li>
+                    <li>
+                        <embed src="image/2.svg" alt="">
+                    </li>
+                    <li>
+                        <embed src="image/3.svg" alt="">
+                    </li>
+                    <li>
+                        <embed src="image/4.svg" alt="">
+                    </li>
+                    <li>
+                        <embed src="image/5.svg" alt="">
+                    </li>
+                </ul>
+            </div>
+
+            <!--Product-->
+            <!--<div class="row"></div>-->
+            <div class="categoryLarge">
+                <ul>
+                    <li><a href="#">Máy Game</a></li>
+                    <li><a href="#">Phụ Kiện Game</a></li>
+                </ul>
+            </div>
+
+            <!--Item Product-->
+            <div class="slider1">
+                <div class="slide">
+                    <div>
+                        <img src="image/nintendo-switch-gray-joy-con-00-250x250.jpg"/>
+                    </div>
+                    <a href="#"><h4>Nintendo Switch with Gray Joy-Con</h4></a>
+                    <h5>9.300.000đ</h5>
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#282B3A"
+                              d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                    </svg>
+                </div>
+                <div class="slide">
+                    <div>
+                        <img src="image/ps4-slim-dualshock-4-250x250.jpg"/>
+                    </div>
+                    <a href="ContentProductDetail"><h4>PS4 Slim Dualshock</h4></a>
+                    <h5>5.000.000đ</h5>
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#282B3A"
+                              d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                    </svg>
+                </div>
+                <div class="slide">
+                    <div></div>
+                </div>
+                <div class="slide">
+                    <div></div>
+                </div>
+                <div class="slide">
+                    <div></div>
+                </div>
+                <div class="slide">
+                    <div></div>
+                </div>
+                <div class="slide">
+                    <div></div>
+                </div>
+            </div>
+            <div class="advertisement">
+                <img src="image/ps4-slim-dualshock-4-250x250.jpg">
+            </div>
+
+            <!--<div class="row"></div>-->
+            <div class="categoryLarge">
+                <ul>
+                    <li><a href="#">Game PS4</a></li>
+                    <li><a href="#">Game PS3</a></li>
+                    <li><a href="#">Game 3DS</a></li>
+                    <li><a href="#">Game PS Vita</a></li>
+                </ul>
+            </div>
+
+            <!--Item Product -->
+            <div class="slider1">
+                <div class="slide">
+                    <div>
+                        <img src="image/farpoint-ps4-250x250.jpg"/>
+                    </div>
+                    <a href="#"><h4>Farpoint - VR - US</h4></a>
+                    <h5>1.350.000đ</h5>
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#282B3A"
+                              d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                    </svg>
+                </div>
+                <div class="slide">
+                    <div>
+                        <img src="image/portal-knights-gold-throne-edition-ps4-250x250.jpg"/>
+                    </div>
+                    <a href="#"><h4>Portal Knights: Gold Throne Edition - US</h4></a>
+                    <h5>850.000đ</h5>
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#282B3A"
+                              d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                    </svg>
+                </div>
+                <div class="slide">
+                    <div>
+                        <img src="image/akiras-beat-ps4-250x250.jpg"/>
+                    </div>
+                    <a href="#"><h4>Akiba's Beat - US</h4></a>
+                    <h5>1.280.000đ</h5>
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#282B3A"
+                              d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                    </svg>
+                </div>
+                <div class="slide">
+                    <div></div>
+                </div>
+                <div class="slide">
+                    <div></div>
+                </div>
+                <div class="slide">
+                    <div></div>
+                </div>
+                <div class="slide">
+                    <div></div>
+                </div>
+            </div>
+            <div class="advertisement">advanced</div>
+
+            <!--<div class="row"></div>-->
+            <div class="categoryLarge">
+                <ul>
+                    <li><a href="#">iPhone 7</a></li>
+                    <li><a href="#">iPhone 6s</a></li>
+                    <li><a href="#">Samsung S8</a></li>
+                    <li><a href="#">Game PS Vita</a></li>
+                </ul>
+            </div>
+
+            <div class="slider1">
+                <div class="slide">
+                    <div>
+                        <img src="image/farpoint-ps4-250x250.jpg"/>
+                    </div>
+                    <a href="#"><h4>Farpoint - VR - US</h4></a>
+                    <h5>1.350.000đ</h5>
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#282B3A"
+                              d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                    </svg>
+                </div>
+                <div class="slide">
+                    <div>
+                        <img src="image/portal-knights-gold-throne-edition-ps4-250x250.jpg"/>
+                    </div>
+                    <a href="#"><h4>Portal Knights: Gold Throne Edition - US</h4></a>
+                    <h5>850.000đ</h5>
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#282B3A"
+                              d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                    </svg>
+                </div>
+                <div class="slide">
+                    <div>
+                        <img src="image/akiras-beat-ps4-250x250.jpg"/>
+                    </div>
+                    <a href="#"><h4>Akiba's Beat - US</h4></a>
+                    <h5>1.280.000đ</h5>
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#282B3A"
+                              d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                    </svg>
+                </div>
+                <div class="slide">
+                    <div></div>
+                </div>
+                <div class="slide">
+                    <div></div>
+                </div>
+
+            </div>
+            <div class="advertisement">advanced</div>
+
+        </div>
+    </div>
+
+
+
+    <div class="row" id="footerPage">
+        <footer>
+            <div class="footer" id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> GIỚI THIỆU </h3>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        Hệ thống bán lẻ chính hãng ,uy tín :
+                                        máy chơi game, điện thoại, máy tính bảng, laptop, đồ chơi kĩ thuật số
+                                    </a>
+                                </li>
+                                <li> <a href="#"> GÓP Ý,KHIẾU NẠI</a> </li>
+                                <li> <a href="#"> Email: htcvtc59@gmai.com </a> </li>
+                                <li> <a href="#"> Phone: 0979 995 575</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> HỖ TRỢ </h3>
+                            <ul>
+                                <li> <a href="#"> Thương hiệu</a> </li>
+                                <li> <a href="#"> Tin tức </a> </li>
+                                <li> <a href="#"> Hướng dẫn mua hàng </a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> Thông tin </h3>
+                            <ul>
+                                <li> <a href="#"> Quy định chung </a> </li>
+                                <li> <a href="#"> Quy định bảo hành </a> </li>
+                                <li> <a href="#"> Quy định đặt cọc </a> </li>
+                                <li> <a href="#"> Chính sách giao hàng </a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                            <h3> LIÊN HỆ </h3>
+                            <ul>
+                                <li> <a href="#"> ĐỊA CHỈ:</a> </li>
+                                <li> <a href="#"> - 92 Pasteur,HN</a> </li>
+                                <li> <a href="#"> THỜI GIAN LÀM VIỆC: </a> </li>
+                                <li> <a href="#"> - Các ngày trong tuần: 9h - 20h</a> </li>
+                                <li> <a href="#"> - Chủ nhật và ngày lễ: 9h - 19h</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 " style="padding-top: 100px;">
+
+                            <ul>
+                                <li>
+                                    <div class="input-append newsletter-box text-center">
+                                        <input type="text" class="full text-center input-sm" placeholder="Email ">
+                                        <button class="btn  bg-gray btn-success" type="button">Gửi <i class="fa fa-long-arrow-right"> </i> </button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="social">
+                                <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
+                                <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
+                                <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
+                                <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
+                                <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/.row-->
+                </div>
+                <!--/.container-->
+            </div>
+            <!--/.footer-->
+
+            <div class="footer-bottom">
+                <div class="container">
+                    <p class="pull-left"> Copyright © 2017. Apple Store </p>
+                    <div class="pull-right">
+                        <ul class="nav nav-pills payments">
+                            <li><i class="fa fa-cc-visa"></i></li>
+                            <li><i class="fa fa-cc-mastercard"></i></li>
+                            <li><i class="fa fa-cc-amex"></i></li>
+                            <li><i class="fa fa-cc-paypal"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--/.footer-bottom-->
+        </footer>
+
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    </div>
+    <div class="btn-top" href="javascript:void(0);" title="Top" style="display: inline;"></div>
+
+</div>
+<script src="js/jquery.zoom.js"></script>
+<script src="js/jquery.bxslider.min.js"></script>
+<script src="js/responsiveslides.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

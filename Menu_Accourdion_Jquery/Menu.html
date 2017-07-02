@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".con").hide();
+            $(".cap1").click(function () {
+                $(".con").slideUp();
+                $(this).next().slideToggle();
+            });
+        });
+    </script>
+    <style>
+        #menu {
+            width: 200px;
+        }
+
+        .cap1 {
+            background-color: cadetblue;
+            height: 30px;
+            color: white;
+            padding: 5px;
+        }
+
+        .con a:link, .con a:visited {
+            display: block
+        }
+
+        .con a {
+            background-color: cornflowerblue;
+            text-decoration: none;
+            color: white;
+            padding: 3px;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+<div id="menu">
+    <div class="cap1">Khoa Hoc</div>
+    <div class="con">
+        <a href="#">IOS</a>
+        <a href="#">Android</a>
+        <a href="#">PHP</a>
+    </div>
+    <div class="cap1">Khoa Hoc</div>
+    <div class="con">
+        <a href="#">IOS</a>
+        <a href="#">Android</a>
+        <a href="#">PHP</a>
+    </div>
+    <div class="cap1">Khoa Hoc</div>
+    <div class="con">
+        <a href="#">IOS</a>
+        <a href="#">Android</a>
+        <a href="#">PHP</a>
+    </div>
+</div>
+</body>
+</html>

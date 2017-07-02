@@ -1,0 +1,43 @@
+*{
+  padding:0;
+  margin:0;
+}
+body{
+  font-family:sans-serif;
+  color:#333;
+}
+
+
+/* menu*/
+#menu ul{
+  list-style-type:none;
+  background-color:#1f568B;
+  text-align:center;
+}
+
+#menu ul li{
+  position:relative;
+display:inline-table;
+  color:#f1f1f1;
+  width:120px;
+  height:40px;
+  line-height:40px;
+}
+#menu ul li a{
+  color:#f1f1f1;
+  text-decoration:none;
+  display:block;
+}
+#menu ul li a:hover{
+  background-color:#f1f1f1;
+  color:#333;
+}
+#menu ul li > .sub-menu{
+  display:none;
+  position:absolute;
+}
+
+#menu ul li:hover .sub-menu{
+  
+  display:block;
+}

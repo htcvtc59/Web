@@ -1,0 +1,30 @@
+ul{
+  list-style-type:none;
+}
+#img > li{
+  margin-right:30px;
+  display:inline;
+  float:left;
+}
+.one{
+  position:relative;
+  margin-bottom:30px;
+}
+.one span{
+  position:absolute;
+  top:100%;
+  left:30%;
+}
+.two{
+  position:relative;
+  margin-bottom:30px;
+}
+.two span{
+  position:absolute;
+  top:100%;
+  left:30%;
+}
+
+
+
+
